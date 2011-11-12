@@ -1,3 +1,7 @@
+
+2011-11-12
+Added etag display to list option
+
 2010-12-16
 Version 1.3.7
 Install instructions
@@ -93,7 +97,7 @@ program).
 2006-10-26
 Version 1.0.11
 Revamped some details of the generators and comparator so that directories are
-handled in a more exact and uniform fashion across local and S3. 
+handled in a more exact and uniform fashion across local and S3.
 ----------
 
 2006-11-28
@@ -103,7 +107,7 @@ Added a couple more error catches to s3try.
 
 2007-01-08
 Version 1.0.13
-Numerous small changes to slash and path handling, in order to catch several 
+Numerous small changes to slash and path handling, in order to catch several
 cases where "root" directory nodes were not being created on S3.
 This makes restores work a lot more intuitively in many cases.
 ----------
@@ -130,7 +134,7 @@ which we need in order to make some decisios in the local generator.
 - Fixed problem where it would prepend a "/" to s3 key names even with blank
 prefix.
 - Fixed S3->local when there's no "/" in the source so it doesn't try to create
-a folder with the bucket name. 
+a folder with the bucket name.
 - Updated s3try and s3_s3sync_mod to allow SSL_CERT_FILE
 ----------
 
@@ -156,7 +160,7 @@ In the case of commands of the form:
 The root directory node in s3 was being stored as "somedir/" instead of "somedir"
 which caused restores to mess up when you say:
 	s3sync -r somebucket: restoredir
-The fix to this, by coincidence, actually makes s3fox work even *less* well with 
+The fix to this, by coincidence, actually makes s3fox work even *less* well with
 s3sync.  I really need to build my own xul+javascript s3 GUI some day.
 
 Also fixed some of the NoMethodError stuff for when --progress is used
@@ -172,7 +176,7 @@ Added Alastair Brunton's yaml config code.
 Version 1.2.1
 Compatibility for S3 API revisions.
 When retries are exhausted, emit an error.
-Don't ever try to delete the 'root' local dir.    
+Don't ever try to delete the 'root' local dir.
 ----------
 
 2007-11-20
@@ -204,3 +208,4 @@ Added option --no-md5
 Version 1.2.6
 Catch connect errors and retry.
 ----------
+

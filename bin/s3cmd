@@ -40,7 +40,7 @@ module S3sync
   --help    -h        --verbose     -v     --dryrun    -n
   --ssl     -s        --debug       -d     --progress
   --expires-in=( <# of seconds> | [#d|#h|#m|#s] )
-  
+
 Commands:
 #{name}  listbuckets  [headers]
 #{name}  createbucket  <bucket>  [constraint (i.e. EU)]
@@ -86,7 +86,7 @@ ENDUSAGE
     # ---------- COMMAND PROCESSING ---------- #
     command, path, file = ARGV
 
-    s3cmdUsage("You didn't set up your environment variables; see README.txt") if not($AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY) 
+    s3cmdUsage("You didn't set up your environment variables; see README.txt") if not($AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY)
     s3cmdUsage("Need a command (etc)") if not command
 
     path = '' unless path
@@ -143,7 +143,7 @@ ENDUSAGE
           puts "--------------------"
         end
         res.entries.each do |item|
-          puts Iconv.iconv($S3SYNC_NATIVE_CHARSET, "UTF-8", item.key).join
+          puts Iconv.iconv($S3SYNC_NATIVE_CHARSET, "UTF-8", item.key + "\t" + item.etag.gsub('"',"")).join
         end
         if res.properties.is_truncated
           printf "More? Y/n: "
@@ -336,3 +336,4 @@ end #module
 
 
 S3sync::s3cmdMain #go!
+
